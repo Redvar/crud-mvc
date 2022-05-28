@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+</head>
+<body>
+<div class="container">
+    <div class="container" th:align="left">
+        <p><b>Выберите нужное действие</b></p>
+        <ol>
+            <li><a href="/users/new">Добавить пользователя</a></li>
+            <li><a href="/users">Список пользователей</a></li>
+        </ol>
+    </div>
+    <hr>
+    <p><b>Список пользователей</b></p>
+    <div class="container">
+        <table th:border="1px" cellspacing="0" th:align="left" th:width="860px">
+            <tr>
+                <td>id</td>
+                <td>Имя</td>
+                <td>Фамилия</td>
+                <td>E-mail</td>
+                <td></td>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.getId()}">id</td>
+                <td th:text="${user.getFirstName()}">Имя</td>
+                <td th:text="${user.getLastName()}">Фамилия</td>
+                <td th:text="${user.getEmail()}">E-mail</td>
+                <td><a th:href="@{/users/{id}(id=${user.getId()})}" text="Данные пользователя">Данные пользователя</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый пользователь</title>
+</head>
+<div class="container">
+    <div class="container" th:align="left">
+        <p><b>Выберите нужное действие</b></p>
+        <ol>
+            <li><a href="/users/new">Добавить пользователя</a></li>
+            <li><a href="/users">Список пользователей</a></li>
+        </ol>
+    </div>
+    <hr>
+    <p><b>Добавление нового пользователя</b></p>
+    <div class="container">
+        <table th:border="1px" cellspacing="0" th:align="left" th:width="860px">
+            <tr>
+                <td>id</td>
+                <td>Имя</td>
+                <td>Фамилия</td>
+                <td>E-mail</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <form th:method="POST" th:action="@{/users}" th:object="${user}">
+                    <td>
+                        <label for="firstName">Введите имя:</label>
+                        <input th:type="text" th:field="*{firstName}" id="firstName" />
+                    </td>
+                    <td>
+                        <label for="lastName">Введите фамилию:</label>
+                        <input th:type="text" th:field="*{lastName}" id="lastName" />
+                    </td>
+                    <td>
+                        <label for="email">Введите email:</label>
+                        <input th:type="text" th:field="*{email}" id="email" />
+                    </td>
+                    <td>
+                        <label for="password">Введите пароль:</label>
+                        <input th:type="text" th:field="*{password}" id="password" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Создать" />
+                    </td>
+                </form>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
