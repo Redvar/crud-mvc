@@ -1,5 +1,6 @@
 package ru.konoplin.service;
 
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.konoplin.dao.UserDAO;
@@ -29,12 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createOrUpdateUser(User user) {
-        System.out.println(user);
-        if (null == user.getId()) {
-            createUser(user);
-        } else {
-            updateUser(user);
-        }
+        userDAO.createUser(user);
     }
 
     private void createUser(User user) {
@@ -46,13 +42,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User deleteUser(Long id) {
-        User user = null;
-        try {
-            user = userDAO.deleteUser(id);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return user;
+    public void deleteUser(Long id) {
+        userDAO.deleteUser(id);
     }
 }
